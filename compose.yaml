@@ -1,0 +1,14 @@
+services:
+  mycontainer:
+    build: .
+    image: "docker.io/longdevbf/demo-rofl:latest@sha256:42c32ccfe0a0c84ac5969a1399e4658bed8e8d1517cc6b26cdce67439c66c910"      # Always provide FQDN image names!
+    platform: linux/amd64
+    volumes:
+      - my-volume:/root/.my-volume              # Persistent per-machine storage.
+      - /run/rofl-appd.sock:/run/rofl-appd.sock # appd REST API.
+    environment:
+      - CONTRACT_ADDRESS=0x8F5c246c8db963B738eED3927C39cf4590684451
+      # Ticker.
+      - TICKER=ROSEUSDT
+volumes:
+  my-volume:
